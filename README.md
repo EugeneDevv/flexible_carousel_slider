@@ -31,7 +31,7 @@ Lastly:
 Import it like so:
 
 ```dart
-import 'package:sghi_core/app_wrapper/app_wrapper.dart';
+
 ```
 
 ## Usage
