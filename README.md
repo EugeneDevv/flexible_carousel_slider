@@ -1,4 +1,4 @@
-[![Release](https://img.shields.io/badge/PreRelease-^0.0.1-success.svg?style=for-the-badge)](https://shields.io/)
+[![Release](https://img.shields.io/badge/PreRelease-^0.0.2-success.svg?style=for-the-badge)](https://shields.io/)
 [![Maintained](https://img.shields.io/badge/Maintained-Actively-informational.svg?style=for-the-badge)](https://shields.io/)
 
 # flexible_carousel_slider
@@ -21,7 +21,7 @@ This will add a line like this to your package's pubspec.yaml (and run an implic
 
 ```dart
 dependencies:
-  flexible_carousel_slider: ^0.0.1
+  flexible_carousel_slider: ^0.0.2
 ```
 
 Alternatively, your editor might support flutter pub get. Check the docs for your editor to learn more.
