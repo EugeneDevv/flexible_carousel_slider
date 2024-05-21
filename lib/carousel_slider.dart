@@ -73,8 +73,8 @@ class _CarouselSliderState extends State<CarouselSlider>
 
   @override
   void initState() {
-    _heights = widget.children.map((Widget e) => 0.0).toList();
     super.initState();
+    _heights = widget.children.map((Widget e) => 0.0).toList();
     _pageController = PageController(viewportFraction: widget.viewportRatio);
     if (widget.autoPlay) {
       sliderTimer = getTimer(duration: widget.autoPlayInterval);
@@ -82,14 +82,17 @@ class _CarouselSliderState extends State<CarouselSlider>
   }
 
   Timer getTimer({required int duration}) {
-    return Timer.periodic(Duration(seconds: duration), (Timer timer) {
-      _pageController.animateToPage(
-        _currentPage,
-        duration: const Duration(seconds: 1),
-        curve: widget.autoPlayCurve,
-      );
-      _currentPage++;
-    });
+    return Timer.periodic(
+      Duration(seconds: duration),
+      (Timer timer) {
+        _pageController.animateToPage(
+          _currentPage,
+          duration: const Duration(seconds: 1),
+          curve: widget.autoPlayCurve,
+        );
+        _currentPage++;
+      },
+    );
   }
 
   double get _currentHeight => _heights[_currentIndex];
@@ -146,9 +149,9 @@ class _CarouselSliderState extends State<CarouselSlider>
             physics: widget.scrollPhysics,
             onPageChanged: (int index) =>
                 setState(() => _currentIndex = index % widget.children.length),
-            itemBuilder: (_, int index) {
+            itemBuilder: (BuildContext context, int index) {
               return _sizeReportingChildren
-                  .asMap() //
+                  .asMap()
                   .map(
                     (int index, Widget child) =>
                         MapEntry<int, Widget>(index, child),
@@ -166,7 +169,7 @@ class _CarouselSliderState extends State<CarouselSlider>
           children: List<Widget>.generate(
             widget.children.length,
             (int index) => Container(
-              margin: const EdgeInsets.all(2.0),
+              margin: const EdgeInsets.all(2),
               child: Icon(
                 Icons.circle,
                 size: 12.2,
