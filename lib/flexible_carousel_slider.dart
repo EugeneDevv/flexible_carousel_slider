@@ -1,3 +1,4 @@
-library flexible_carousel_slider;
+/// A Very Good Project created by Very Good CLI.
+library;
 
-export 'carousel_slider.dart';
+export 'src/flexible_carousel_slider.dart';

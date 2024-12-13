@@ -1,15 +1,18 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'dart:async';
-import 'package:flexible_carousel_slider/widget_keys.dart';
+import 'package:flexible_carousel_slider/src/widget_keys.dart';
 import 'package:flutter/material.dart';
 
-class CarouselSlider extends StatefulWidget {
-  const CarouselSlider({
+/// {@template flexible_carousel_slider}
+/// A Very Good Project created by Very Good CLI.
+/// {@endtemplate}
+class FlexibleCarouselSlider extends StatefulWidget {
+  /// {@macro flexible_carousel_slider}
+  const FlexibleCarouselSlider({
     super.key,
     required this.children,
     this.autoPlayInterval = 4,
     this.autoPlay = true,
+    this.autoPlayIntervalDuration = const Duration(seconds: 1),
     this.autoPlayCurve = Curves.easeInOutCirc,
     this.viewportRatio = 0.92,
     this.scrollPhysics,
@@ -20,6 +23,8 @@ class CarouselSlider extends StatefulWidget {
   /// Use [autoPlayInterval] to determent the frequency of slides.
   /// Defaults to false.
   final bool autoPlay;
+
+  final Duration autoPlayIntervalDuration;
 
   /// Determines the animation curve physics.
   ///
@@ -52,10 +57,10 @@ class CarouselSlider extends StatefulWidget {
   final double viewportRatio;
 
   @override
-  _CarouselSliderState createState() => _CarouselSliderState();
+  _FlexibleCarouselSliderState createState() => _FlexibleCarouselSliderState();
 }
 
-class _CarouselSliderState extends State<CarouselSlider>
+class _FlexibleCarouselSliderState extends State<FlexibleCarouselSlider>
     with TickerProviderStateMixin {
   Timer? sliderTimer;
 
@@ -87,7 +92,7 @@ class _CarouselSliderState extends State<CarouselSlider>
       (Timer timer) {
         _pageController.animateToPage(
           _currentPage,
-          duration: const Duration(seconds: 1),
+          duration: widget.autoPlayIntervalDuration,
           curve: widget.autoPlayCurve,
         );
         _currentPage++;
